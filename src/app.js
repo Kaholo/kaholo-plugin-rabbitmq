@@ -57,42 +57,6 @@ function consume(action,settings){
     })
 }
 
-function isQueueEmpty(action,settings){
-    return new Promise((resolve,reject) => {
-        const connectionString = `amqp://${settings.USERNAME}:${settings.PASSWORD}@${settings.HOST}:${settings.PORT}${action.params.vhost ? `/${action.params.vhost}` : ''}`;
-        amqp.connect(connectionString,(err, connection)=> {
-            if(err){
-                return reject(err)
-            }
-
-            connection.createChannel(async (err,channel)=>{
-                if (err){
-                    return reject(err)
-                }
-                const queueName = action.params.queue;
-
-                channel.assertQueue(queueName,{
-                    durable: false
-                })
-
-                var isEmpty = true;
-
-                setTimeout(() => {
-                    channel.close()
-                    connection.close();
-                    return resolve(`${isEmpty ? 'Empty' : 'Not Empty'}`);
-                },5000)
-        
-                return channel.consume(queueName,(msg)=>{
-                    isEmpty = false;
-                }, {
-                    noAck: false
-                });
-            })
-        })
-    })
-}
-
 function purgeQueues(action,settings){
     return new Promise((resolve,reject) => {
         const connectionString = `amqp://${settings.USERNAME}:${settings.PASSWORD}@${settings.HOST}:${settings.PORT}${action.params.vhost ? `/${action.params.vhost}` : ''}`;
@@ -136,6 +100,5 @@ function purgeQueue(channel, queueName){
 module.exports = {
     publish:publish,
     consume:consume,
-    isQueueEmpty:isQueueEmpty,
     purgeQueues:purgeQueues
 }

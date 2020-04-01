@@ -67,22 +67,6 @@
             ]
         },
         {
-            "name": "isQueueEmpty",
-            "viewName": "Is Queue Empty",
-            "params": [
-                {
-                    "name": "vhost",
-                    "viewName": "Vhost",
-                    "type": "string"
-                },
-                {
-                    "name": "queue",
-                    "viewName": "Queue",
-                    "type": "string"
-                }
-            ]
-        },
-        {
             "name": "purgeQueues",
             "viewName": "Purge Queues",
             "params": [
