@@ -1,0 +1,102 @@
+{
+    "name": "RabbitMQ",
+    "type": "executer",
+    "main": "app.js",
+    "execProgram": "node",
+    "exposeRoute": false,
+    "imgUrl": "logo.png",
+    "version": "1.0.1",
+    "settings" : [
+        {
+            "name": "USERNAME",
+            "viewName": "Username",
+            "type": "string"
+        },
+        {
+            "name": "PASSWORD",
+            "viewName": "Password",
+            "type": "vault"
+        },
+        {
+            "name": "HOST",
+            "viewName": "Host",
+            "type": "string"
+        },
+        {
+            "name": "PORT",
+            "viewName": "port",
+            "type": "string"
+        }
+    ],
+    "methods": [
+        {
+            "name": "publish",
+            "viewName": "Publish Job",
+            "params": [
+                {
+                    "name": "vhost",
+                    "viewName": "Vhost",
+                    "type": "string"
+                },
+                {
+                    "name": "queue",
+                    "viewName": "Queue",
+                    "type": "string"
+                },
+                {
+                    "name": "message",
+                    "viewName": "Message",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "consume",
+            "viewName": "Consume job",
+            "params": [
+                {
+                    "name": "vhost",
+                    "viewName": "Vhost",
+                    "type": "string"
+                },
+                {
+                    "name": "queue",
+                    "viewName": "Queue",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "isQueueEmpty",
+            "viewName": "Is Queue Empty",
+            "params": [
+                {
+                    "name": "vhost",
+                    "viewName": "Vhost",
+                    "type": "string"
+                },
+                {
+                    "name": "queue",
+                    "viewName": "Queue",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "purgeQueues",
+            "viewName": "Purge Queues",
+            "params": [
+                {
+                    "name": "vhost",
+                    "viewName": "Vhost",
+                    "type": "string"
+                },
+                {
+                    "name": "queues",
+                    "viewName": "Queues",
+                    "type": "string"
+                }
+            ]
+        }
+    ] 
+}
