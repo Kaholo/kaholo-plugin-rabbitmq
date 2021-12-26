@@ -98,7 +98,7 @@ function purgeQueue(channel, queueName){
 
 
 module.exports = {
-    publish:publish,
-    consume:consume,
-    purgeQueues:purgeQueues
+    publish: publish,
+    consume: consume,
+    purgeQueues: purgeQueues
 }
